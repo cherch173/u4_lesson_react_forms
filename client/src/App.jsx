@@ -21,7 +21,9 @@ const App = () => {
 
   return (
     <div>
-      <Form />
+      <Form 
+        getIssues={getIssues}
+      />
       <h1>Issues:</h1>
       {issues.map((issue) => (
         <div key={issue._id}>

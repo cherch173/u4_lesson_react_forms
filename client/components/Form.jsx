@@ -1,10 +1,11 @@
 // Step 1.1 IMPORT useState
 import { useState } from "react";
+import axios from "axios";
 
 // Step 1.2 declare FORM and initialState
-const Form = () => {
+const Form = ({getIssues}) => {
     const initialState = {
-        issueType: '',
+        issueType: 'outage',
         subject: '',
         message: '',
       }
@@ -13,10 +14,13 @@ const Form = () => {
       
       // Step 3 -- code out handleSubmit
       // and add onSubmit to FORM
-      const handleSubmit = (event) => {
+      const handleSubmit = async (event) => {
         event.preventDefault()
-        console.log(fromState)
+        // Step 5  -- Swap console.log for API POST Request
+        await axios.post('http://localhost:3001/issues', formState)
         setFormState(initialState)
+        // Step 5.2 -- invoke getIssues
+        getIssues()
       }
 
       // Step 4 -- code out handleChange
